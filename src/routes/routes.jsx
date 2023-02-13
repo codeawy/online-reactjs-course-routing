@@ -3,16 +3,27 @@ import App from "../App";
 import Home from "../pages";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
+import Navbar from "../layout/Navbar";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <>
+        {/* <Navbar /> */}
+        <App />
+      </>
+    ),
     errorElement: <div>Not Found</div>,
   },
   {
     path: "/home",
-    element: <Home />,
+    element: (
+      <>
+        {/* <Navbar /> */}
+        <Home />
+      </>
+    ),
     errorElement: <div>Not Found</div>,
   },
   {

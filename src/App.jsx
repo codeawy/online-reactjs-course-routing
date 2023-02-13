@@ -1,23 +1,27 @@
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Products from "./pages/Products";
+import Layout from "./layout/layout";
+import Routing from "./pages/Routing";
+import PageNotFound from "./pages/PageNotFound";
+import ProductsLayout from "./layout/ProductsLayout";
+
 const App = () => {
   return (
-    <div className="flex flex-col items-start m-10">
-      <h1 className="w-fit rounded-lg text-4xl text-center mb-10 border-4 border-dotted border-indigo-500 p-5">
-        Routing Chapter
-      </h1>
-      <ul className="list-disc">
-        <li class="mb-2">Routing Setup</li>
-        <li class="mb-2">Routes & Route Components</li>
-        <li class="mb-2">Dynamic Routes</li>
-        <li class="mb-2">Routes with Params</li>
-        <li class="mb-2">Nest Routes</li>
-        <li class="mb-2">Link, NavLink</li>
-        <li class="mb-2">Redirect</li>
-        <li class="mb-2">Protect Routes</li>
-        <li class="mb-2">Outlet</li>
-        <li class="mb-2">Auth Component</li>
-        <li class="mb-2">Is Authenticated?</li>
-      </ul>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="routing" element={<Routing />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="products" element={<Products />} />
+        </Route>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </>
   );
 };
 
