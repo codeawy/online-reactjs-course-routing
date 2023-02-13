@@ -7,6 +7,7 @@ import Layout from "./layout/layout";
 import Routing from "./pages/Routing";
 import PageNotFound from "./pages/PageNotFound";
 import ProductsLayout from "./layout/ProductsLayout";
+import SingleProductPage from "./pages/SingleProductPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="products" element={<Products />} />
+          <Route path="products/:productId" element={<SingleProductPage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
