@@ -8,12 +8,11 @@ const Routing = () => {
         <li className="mb-2">Routing Setup ✅</li>
         <li className="mb-2">Routes & Route Components ✅</li>
         <li className="mb-2">Link, NavLink ✅</li>
-        <li className="mb-2">Dynamic Routes</li>
-        <li className="mb-2">Routes with Params</li>
-        <li className="mb-2">Nest Routes</li>
-        <li className="mb-2">Redirect</li>
+        <li className="mb-2">Dynamic Routes ✅</li>
+        <li className="mb-2">Outlet ✅</li>
+        <li className="mb-2">Nest Routes ✅</li>
+        <li className="mb-2">Redirect with useNavigate ✅</li>
         <li className="mb-2">Protect Routes</li>
-        <li className="mb-2">Outlet</li>
         <li className="mb-2">Auth Component</li>
         <li className="mb-2">Is Authenticated?</li>
       </ul>

@@ -5,16 +5,24 @@ const Navbar = () => {
     <nav className="my-10">
       <ul className="flex items-center justify-center">
         <li className="mx-3 hover:text-indigo-600 duration-300">
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" reloadDocument>
+            Home
+          </NavLink>
         </li>
         <li className="mx-3 hover:text-indigo-600 duration-300">
-          <NavLink to="routing">Routing</NavLink>
+          <NavLink to="routing" reloadDocument>
+            Routing
+          </NavLink>
         </li>
         <li className="mx-3 hover:text-indigo-600 duration-300">
-          <NavLink to="about">About</NavLink>
+          <NavLink to="about" reloadDocument>
+            About
+          </NavLink>
         </li>
         <li className="mx-3 hover:text-indigo-600 duration-300">
-          <NavLink to="contact">Contact</NavLink>
+          <NavLink to="contact" reloadDocument>
+            Contact
+          </NavLink>
         </li>
         <li className="mx-3 hover:text-indigo-600 duration-300">
           <NavLink to="products">Products</NavLink>
