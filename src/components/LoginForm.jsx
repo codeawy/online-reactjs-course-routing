@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const [user, setUser] = useState({
@@ -13,11 +15,46 @@ const LoginForm = () => {
   };
   const onSubmitHandler = e => {
     e.preventDefault();
-    console.log(user);
+
+    // ** username: 'kminchelle',
+    // ** password: '0lelplR',
+
+    axios
+      .post("https://dummyjson.com/auth/login", user, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + "AUTH_TOKEN",
+        },
+      })
+      .then(res => {
+        toast.success("Logged in successfully", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      })
+      .catch(err => {
+        toast.error(err.response.data.message, {
+          position: "bottom-center",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        console.log(err);
+      });
   };
 
   return (
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={onSubmitHandler} className="mx-10">
       <div className="mb-6">
         <label
           htmlFor="username"
@@ -53,7 +90,7 @@ const LoginForm = () => {
           onChange={onChangeHandler}
         />
       </div>
-      <div className="flex items-start mb-6">
+      {/* <div className="flex items-start mb-6">
         <div className="flex items-center h-5">
           <input
             id="remember"
@@ -69,7 +106,7 @@ const LoginForm = () => {
         >
           Remember me
         </label>
-      </div>
+      </div> */}
       <button
         type="submit"
         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

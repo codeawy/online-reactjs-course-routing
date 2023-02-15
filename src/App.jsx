@@ -1,4 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import PageNotFound from "./pages/PageNotFound";
 import routes from "./routes/routes";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
@@ -32,6 +35,7 @@ const App = () => {
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 };
