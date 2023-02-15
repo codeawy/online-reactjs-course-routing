@@ -7,8 +7,16 @@ import routes from "./routes/routes";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navbar from "./layout/Navbar";
 import Login from "./pages/Login";
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [accessToken, setAccessToken] = useState(null);
+  const token = localStorage.getItem("course-token");
+
+  useEffect(() => {
+    setAccessToken(token);
+  }, [token]);
+
   return (
     <div className="container mx-auto">
       <Routes>
@@ -28,7 +36,7 @@ const App = () => {
         <Route
           path="/login"
           element={
-            <ProtectedRoute isAllowed={true} redirectTo={"/"}>
+            <ProtectedRoute isAllowed={!accessToken} redirectTo={"/"}>
               <Login />
             </ProtectedRoute>
           }

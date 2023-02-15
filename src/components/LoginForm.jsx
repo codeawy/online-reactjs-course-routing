@@ -1,8 +1,9 @@
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
 import { toast } from "react-toastify";
 
 const LoginForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -15,6 +16,7 @@ const LoginForm = () => {
   };
   const onSubmitHandler = e => {
     e.preventDefault();
+    setIsLoading(true);
 
     // ** username: 'kminchelle',
     // ** password: '0lelplR',
@@ -37,6 +39,7 @@ const LoginForm = () => {
           progress: undefined,
           theme: "dark",
         });
+        localStorage.setItem("course-token", res.data.token);
       })
       .catch(err => {
         toast.error(err.response.data.message, {
@@ -50,7 +53,8 @@ const LoginForm = () => {
           theme: "dark",
         });
         console.log(err);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -110,8 +114,9 @@ const LoginForm = () => {
       <button
         type="submit"
         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        disabled={isLoading}
       >
-        Submit
+        {isLoading ? "Loading..." : "Submit"}
       </button>
     </form>
   );

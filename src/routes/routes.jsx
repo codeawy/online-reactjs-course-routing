@@ -2,6 +2,7 @@ import Home from "../pages";
 import Products from "../pages/Products";
 import Routing from "../pages/Routing";
 
+const token = localStorage.getItem("course-token");
 const routes = [
   {
     path: "/",
@@ -24,7 +25,7 @@ const routes = [
   {
     path: "/dashboard",
     component: <h1>Dashboard</h1>,
-    isAllowed: false,
+    isAllowed: token,
     redirectTo: "/",
   },
 ];
