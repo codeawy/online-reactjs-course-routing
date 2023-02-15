@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../api/axios.config";
@@ -28,5 +27,3 @@ const SingleProductPage = () => {
 };
 
 export default SingleProductPage;
-
-// ** /users?limit=100

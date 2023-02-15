@@ -7,22 +7,18 @@ import Layout from "./layout/layout";
 import Routing from "./pages/Routing";
 import PageNotFound from "./pages/PageNotFound";
 import SingleProductPage from "./pages/SingleProductPage";
+import routes from "./routes/routes";
 
 const App = () => {
   return (
-    <>
+    <div className="container mx-auto">
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="routing" element={<Routing />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="products" element={<Products />} />
-          <Route path="products/:productId" element={<SingleProductPage />} />
-        </Route>
+        {routes.map((route, idx) => (
+          <Route key={idx} path={route.path} element={route.component} />
+        ))}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </>
+    </div>
   );
 };
 

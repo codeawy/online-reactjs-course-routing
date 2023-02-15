@@ -5,41 +5,19 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Navbar from "../layout/Navbar";
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
-    element: (
-      <>
-        {/* <Navbar /> */}
-        <App />
-      </>
-    ),
-    errorElement: <div>Not Found</div>,
+    component: <h1>Home Page</h1>,
+    isAllowed: true,
+    redirectTo: "/",
   },
   {
-    path: "/home",
-    element: (
-      <>
-        {/* <Navbar /> */}
-        <Home />
-      </>
-    ),
-    errorElement: <div>Not Found</div>,
+    path: "/dashboard",
+    component: <h1>Dashboard</h1>,
+    isAllowed: false,
+    redirectTo: "/",
   },
-  {
-    path: "/about",
-    element: <About />,
-    errorElement: <div>About Error</div>,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-    errorElement: <div>Contact Error</div>,
-  },
-  {
-    path: "*",
-    element: <div>404 Page not found</div>,
-  },
-]);
+];
 
-export default router;
+export default routes;
