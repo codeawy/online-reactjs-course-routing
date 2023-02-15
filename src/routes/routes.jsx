@@ -1,14 +1,23 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import Home from "../pages";
-import About from "../pages/About";
-import Contact from "../pages/Contact";
-import Navbar from "../layout/Navbar";
+import Products from "../pages/Products";
+import Routing from "../pages/Routing";
 
 const routes = [
   {
     path: "/",
-    component: <h1>Home Page</h1>,
+    component: <Home />,
+    isAllowed: true,
+    redirectTo: "/",
+  },
+  {
+    path: "/routing",
+    component: <Routing />,
+    isAllowed: true,
+    redirectTo: "/",
+  },
+  {
+    path: "/products",
+    component: <Products />,
     isAllowed: true,
     redirectTo: "/",
   },

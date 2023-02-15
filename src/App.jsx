@@ -1,21 +1,35 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Products from "./pages/Products";
-import Layout from "./layout/layout";
-import Routing from "./pages/Routing";
 import PageNotFound from "./pages/PageNotFound";
-import SingleProductPage from "./pages/SingleProductPage";
 import routes from "./routes/routes";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Navbar from "./layout/Navbar";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
     <div className="container mx-auto">
       <Routes>
         {routes.map((route, idx) => (
-          <Route key={idx} path={route.path} element={route.component} />
+          <Route
+            exact
+            key={idx}
+            path={route.path}
+            element={
+              <ProtectedRoute isAllowed={route.isAllowed} redirectTo={route.redirectTo}>
+                <Navbar />
+                {route.component}
+              </ProtectedRoute>
+            }
+          />
         ))}
+        <Route
+          path="/login"
+          element={
+            <ProtectedRoute isAllowed={true} redirectTo={"/"}>
+              <Login />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
