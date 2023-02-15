@@ -1,7 +1,9 @@
+import LoginForm from "../components/LoginForm";
+
 const Login = () => {
   return (
-    <div>
-      <span>Login</span>
+    <div className="container mx-auto m-10">
+      <LoginForm />
     </div>
   );
 };
