@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
-import CookieService from "../services/CookieService";
+import { NavLink, Outlet } from "react-router-dom";
+import CookieService from "../../services/CookieService";
 
-const Navbar = () => {
+const AppLayout = () => {
   const cookies = CookieService.get("user_token");
 
   const logout = () => {
@@ -10,19 +10,21 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="my-10">
-      <ul className="flex items-center justify-center">
+    <>
+      <ul className="flex items-center justify-center my-10">
         <li className="mx-3 hover:text-indigo-400 duration-300">
           <NavLink to="/">Home</NavLink>
         </li>
         <li className="mx-3 hover:text-indigo-400 duration-300">
-          <NavLink to="/routing">Routing</NavLink>
+          <NavLink to="/about" end>
+            About
+          </NavLink>
+        </li>
+        <li className="mx-3 hover:text-indigo-400 duration-300">
+          <NavLink to="/contact">Contact</NavLink>
         </li>
         <li className="mx-3 hover:text-indigo-400 duration-300">
           <NavLink to="/dashboard">Dashboard</NavLink>
-        </li>
-        <li className="mx-3 hover:text-indigo-400 duration-300">
-          <NavLink to="/products">Products</NavLink>
         </li>
         <li className="mx-3 hover:text-indigo-400 duration-300">
           {cookies ? (
@@ -34,8 +36,10 @@ const Navbar = () => {
           )}
         </li>
       </ul>
-    </nav>
+
+      <Outlet />
+    </>
   );
 };
 
-export default Navbar;
+export default AppLayout;

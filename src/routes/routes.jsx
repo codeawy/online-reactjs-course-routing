@@ -4,7 +4,6 @@ import Routing from "../pages/Routing";
 import CookieService from "../services/CookieService";
 
 const cookies = CookieService.get("user_token");
-console.log(cookies);
 
 const routes = [
   {
