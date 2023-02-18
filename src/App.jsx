@@ -7,15 +7,9 @@ import routes from "./routes/routes";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navbar from "./layout/Navbar";
 import Login from "./pages/Login";
-import { useEffect, useState } from "react";
 
 const App = () => {
-  const [accessToken, setAccessToken] = useState(null);
-  const token = localStorage.getItem("course-token");
-
-  useEffect(() => {
-    setAccessToken(token);
-  }, [token]);
+  // ** Get Cookies
 
   return (
     <div className="container mx-auto">
@@ -36,7 +30,7 @@ const App = () => {
         <Route
           path="/login"
           element={
-            <ProtectedRoute isAllowed={!accessToken} redirectTo={"/"}>
+            <ProtectedRoute isAllowed={true} redirectTo={"/"}>
               <Login />
             </ProtectedRoute>
           }

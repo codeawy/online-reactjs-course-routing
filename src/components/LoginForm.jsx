@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import CookieService from "../services/CookieService";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,14 @@ const LoginForm = () => {
           progress: undefined,
           theme: "dark",
         });
-        localStorage.setItem("course-token", res.data.token);
+        const IN_DAY = 2;
+        const expiresInDays = 1000 * 60 * 60 * 24 * IN_DAY;
+        const date = new Date();
+        date.setTime(date.getTime() + expiresInDays);
+        const options = { path: "/", expires: date };
+        CookieService.set("user-token", res.data.token, options);
+
+        window.location.reload(true);
       })
       .catch(err => {
         toast.error(err.response.data.message, {
