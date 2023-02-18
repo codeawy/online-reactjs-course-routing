@@ -7,9 +7,10 @@ import routes from "./routes/routes";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navbar from "./layout/Navbar";
 import Login from "./pages/Login";
+import CookieService from "./services/CookieService";
 
 const App = () => {
-  // ** Get Cookies
+  const cookies = CookieService.get("user_token");
 
   return (
     <div className="container mx-auto">
@@ -30,7 +31,7 @@ const App = () => {
         <Route
           path="/login"
           element={
-            <ProtectedRoute isAllowed={true} redirectTo={"/"}>
+            <ProtectedRoute isAllowed={!cookies} redirectTo={"/"}>
               <Login />
             </ProtectedRoute>
           }

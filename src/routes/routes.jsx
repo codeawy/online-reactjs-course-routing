@@ -1,8 +1,11 @@
 import Home from "../pages";
 import Products from "../pages/Products";
 import Routing from "../pages/Routing";
+import CookieService from "../services/CookieService";
 
-const token = localStorage.getItem("course-token");
+const cookies = CookieService.get("user_token");
+console.log(cookies);
+
 const routes = [
   {
     path: "/",
@@ -25,7 +28,7 @@ const routes = [
   {
     path: "/dashboard",
     component: <h1>Dashboard</h1>,
-    isAllowed: token,
+    isAllowed: cookies,
     redirectTo: "/",
   },
 ];

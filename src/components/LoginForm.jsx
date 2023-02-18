@@ -45,7 +45,7 @@ const LoginForm = () => {
         const date = new Date();
         date.setTime(date.getTime() + expiresInDays);
         const options = { path: "/", expires: date };
-        CookieService.set("user-token", res.data.token, options);
+        CookieService.set("user_token", res.data.token, options);
 
         window.location.reload(true);
       })
